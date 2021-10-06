@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
+
 from network import *
 import shutil
 import psutil
+
 def check_disk_usage(disk):
     """Verifies that there's enough free space on disk"""
     du = shutil.disk_usage(disk)
@@ -13,6 +15,7 @@ def check_cpu_usage():
     usage = psutil.cpu_percent(1)
     print("CPU usage: %d percent" % usage)
     return usage < 75
+
 # If there's not enough disk, or not enough CPU, print an error
 if not check_disk_usage('/') or not check_cpu_usage():
     print("ERROR!")
